@@ -46,5 +46,15 @@ var quill = new Quill('#editor', {
 });
 
 function convert() {
-	console.log(quill.getContents());
+	const delta = quill.getContents();
+	console.log(toHtml(delta));
+	// return toHtml(delta);
 }
+
+function toHtml(delta){
+	const tempCont = document.createElement('div');
+    (new Quill(tempCont)).setContents(delta);
+    return tempCont.getElementsByClassName('ql-editor')[0].innerHTML;
+}
+
+// console.log(convert());

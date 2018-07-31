@@ -197,7 +197,7 @@ export default class ImageResize {
 	checkImage = (evt) => {
 		if (this.img) {
 			if (evt.keyCode == 46 || evt.keyCode == 8) {
-				window.Quill.find(this.img).deleteAt(0);
+				(window.Quill || Quill).find(this.img).deleteAt(0);
 			}
 			this.hide();
 		}
@@ -211,7 +211,7 @@ if (window.Quill) {
 		'alt',
 		'height',
 		'width',
-		'style'
+		'style',
 	];
 
 	var BaseImageFormat = window.Quill.import('formats/image');
